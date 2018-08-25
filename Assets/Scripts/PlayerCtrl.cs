@@ -20,4 +20,11 @@ public class PlayerCtrl : MonoBehaviour {
         Vector2 movement = new Vector2(moveX, moveY);
         rb2d.AddForce(movement * speed);
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("collectable")) {
+            other.gameObject.SetActive(false);
+        }
+    }
 }
