@@ -11,7 +11,7 @@ public class CompletePlayerController : MonoBehaviour {
 	public Text winText;			//Store a reference to the UI Text component which will display the 'You win' message.
 
 	private Rigidbody2D rb2d;		//Store a reference to the Rigidbody2D component required to use 2D Physics.
-	private int count;				//Integer to store the number of pickups collected so far.
+	private int Count;				//Integer to store the number of pickups collected so far.
 
 	// Use this for initialization
 	void Start()
@@ -19,13 +19,13 @@ public class CompletePlayerController : MonoBehaviour {
 		//Get and store a reference to the Rigidbody2D component so that we can access it.
 		rb2d = GetComponent<Rigidbody2D> ();
 
-		//Initialize count to zero.
-		count = 0;
+		//Initialize Count to zero.
+		Count = 0;
 
 		//Initialze winText to a blank string since we haven't won yet at beginning.
 		winText.text = "";
 
-		//Call our SetCountText function which will update the text with the current value for count.
+		//Call our SetCountText function which will update the text with the current value for Count.
 		SetCountText ();
 	}
 
@@ -54,10 +54,10 @@ public class CompletePlayerController : MonoBehaviour {
 			//... then set the other object we just collided with to inactive.
 			other.gameObject.SetActive(false);
 			
-			//Add one to the current value of our count variable.
-			count = count + 1;
+			//Add one to the current value of our Count variable.
+			Count = Count + 1;
 			
-			//Update the currently displayed count by calling the SetCountText function.
+			//Update the currently displayed Count by calling the SetCountText function.
 			SetCountText ();
 		}
 		
@@ -67,11 +67,11 @@ public class CompletePlayerController : MonoBehaviour {
 	//This function updates the text displaying the number of objects we've collected and displays our victory message if we've collected all of them.
 	void SetCountText()
 	{
-		//Set the text property of our our countText object to "Count: " followed by the number stored in our count variable.
-		countText.text = "Count: " + count.ToString ();
+		//Set the text property of our our countText object to "Count: " followed by the number stored in our Count variable.
+		countText.text = "Count: " + Count.ToString ();
 
 		//Check if we've collected all 12 pickups. If we have...
-		if (count >= 12)
+		if (Count >= 12)
 			//... then set the text property of our winText object to "You win!"
 			winText.text = "You win!";
 	}
